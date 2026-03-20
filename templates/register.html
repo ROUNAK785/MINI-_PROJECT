@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | FinPredict</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; color: #f8fafc; padding: 20px; }
+        .bg-shapes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
+        .shape1 { position: absolute; width: 400px; height: 400px; background: linear-gradient(to right, #8b5cf6, #3b82f6); border-radius: 50%; filter: blur(80px); opacity: 0.5; top: -100px; left: -100px; animation: float 8s infinite alternate ease-in-out; }
+        .shape2 { position: absolute; width: 300px; height: 300px; background: linear-gradient(to right, #ec4899, #f43f5e); border-radius: 50%; filter: blur(80px); opacity: 0.4; bottom: -50px; right: -50px; animation: float 10s infinite alternate ease-in-out reverse; }
+        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, 50px) scale(1.1); } }
+        .glass-container { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 40px; width: 100%; max-width: 420px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); animation: slideUp 0.6s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        h2 { font-weight: 600; font-size: 28px; margin-bottom: 24px; text-align: center; color: #fff; letter-spacing: -0.5px; }
+        form { display: flex; flex-direction: column; gap: 16px; }
+        input { width: 100%; padding: 16px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: #fff; font-size: 15px; outline: none; transition: all 0.3s ease; }
+        input:focus { background: rgba(255, 255, 255, 0.1); border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2); }
+        input::placeholder { color: #94a3b8; }
+        button { width: 100%; padding: 16px; border: none; border-radius: 12px; background: linear-gradient(to right, #8b5cf6, #3b82f6); color: white; font-size: 16px; font-weight: 600; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; margin-top: 8px; }
+        button:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -10px rgba(139, 92, 246, 0.6); }
+        a { display: block; text-align: center; margin-top: 24px; color: #94a3b8; text-decoration: none; font-size: 14px; transition: color 0.3s ease; }
+        a:hover { color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="bg-shapes">
+        <div class="shape1"></div>
+        <div class="shape2"></div>
+    </div>
+    <div class="glass-container">
+        <h2>Create Account</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="password" name="password" placeholder="Secure Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <a href="/login">Already have an account? Log in here.</a>
+    </div>
+</body>
+</html>

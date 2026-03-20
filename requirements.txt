@@ -1,0 +1,8 @@
+flask
+yfinance
+pandas
+scikit-learn
+xgboost
+matplotlib
+joblib
+python-dotenv
