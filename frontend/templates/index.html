@@ -7,45 +7,90 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #f8fafc; padding: 20px; overflow-x: hidden; }
+        body { background: #0f172a; min-height: 100vh; overflow-x: hidden; color: #f8fafc; }
         
+        /* Animated Background Shapes */
         .bg-shapes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        .shape1 { position: absolute; width: 500px; height: 500px; background: linear-gradient(to right, #8b5cf6, #3b82f6); border-radius: 50%; filter: blur(100px); opacity: 0.4; top: -150px; left: -150px; animation: float 10s infinite alternate ease-in-out; }
-        .shape2 { position: absolute; width: 400px; height: 400px; background: linear-gradient(to right, #ec4899, #f43f5e); border-radius: 50%; filter: blur(100px); opacity: 0.3; bottom: -100px; right: -100px; animation: float 12s infinite alternate ease-in-out reverse; }
-        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, 80px) scale(1.1); } }
+        .shape1 { position: absolute; width: 600px; height: 600px; background: linear-gradient(to right, #8b5cf6, #3b82f6); border-radius: 50%; filter: blur(120px); opacity: 0.3; top: -200px; left: -200px; animation: float 10s infinite alternate ease-in-out; }
+        .shape2 { position: absolute; width: 500px; height: 500px; background: linear-gradient(to right, #ec4899, #f43f5e); border-radius: 50%; filter: blur(120px); opacity: 0.3; bottom: -200px; right: -200px; animation: float 12s infinite alternate ease-in-out reverse; }
+        .shape3 { position: absolute; width: 400px; height: 400px; background: linear-gradient(to right, #10b981, #059669); border-radius: 50%; filter: blur(120px); opacity: 0.2; top: 40%; left: 60%; animation: float 15s infinite alternate ease-in-out; }
+        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(60px, 90px) scale(1.1); } }
 
-        .glass-hero { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 32px; padding: 60px 40px; width: 100%; max-width: 800px; text-align: center; box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5); animation: fadeUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
+        /* Navigation Bar */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 60px; position: fixed; width: 100%; top: 0; z-index: 100; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .logo { font-size: 24px; font-weight: 800; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-link { color: #94a3b8; text-decoration: none; font-weight: 600; font-size: 15px; transition: color 0.3s ease; }
+        .nav-link:hover { color: #fff; }
+        .btn-nav { background: rgba(255, 255, 255, 0.1); padding: 10px 24px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.3s ease; }
+        .btn-nav:hover { background: linear-gradient(to right, #8b5cf6, #3b82f6); border-color: transparent; transform: translateY(-2px); box-shadow: 0 10px 20px -10px rgba(139, 92, 246, 0.5); }
+        .btn-nav-primary { background: linear-gradient(to right, #8b5cf6, #3b82f6); border: none; }
+
+        /* Main Hero Section */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px 40px; text-align: center; }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 32px; padding: 80px 40px; width: 100%; max-width: 1000px; box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5); animation: fadeUp 1s ease-out forwards; opacity: 0; transform: translateY(40px); }
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-        h1 { font-weight: 800; font-size: 56px; margin-bottom: 24px; color: #fff; letter-spacing: -1.5px; line-height: 1.1; }
+        .chip { display: inline-block; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.4); color: #c4b5fd; padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+
+        h1 { font-weight: 800; font-size: 64px; margin-bottom: 24px; color: #fff; letter-spacing: -2px; line-height: 1.1; }
         h1 span { background: linear-gradient(to right, #4ade80, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        p { font-size: 20px; color: #94a3b8; line-height: 1.6; margin-bottom: 40px; font-weight: 300; }
+        p.subtitle { font-size: 20px; color: #94a3b8; line-height: 1.6; margin-bottom: 48px; font-weight: 300; max-width: 700px; margin-left: auto; margin-right: auto; }
 
-        .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        
-        a.btn { text-decoration: none; padding: 18px 40px; border-radius: 100px; font-size: 18px; font-weight: 600; transition: all 0.3s ease; display: inline-block; }
-        
-        .btn-primary { background: linear-gradient(to right, #8b5cf6, #3b82f6); color: white; box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 30px -10px rgba(139, 92, 246, 0.6); }
-        
-        .btn-secondary { background: rgba(255, 255, 255, 0.05); color: #f8fafc; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-3px); }
+        /* Feature Cards */
+        .features { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+        .feature-card { background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 32px; flex: 1; min-width: 250px; text-align: left; transition: transform 0.3s ease, background 0.3s ease; }
+        .feature-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.05); border-color: rgba(139, 92, 246, 0.4); }
+        .feature-icon { font-size: 32px; margin-bottom: 16px; display: inline-block; padding: 12px; background: rgba(255, 255, 255, 0.05); border-radius: 16px; }
+        .feature-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; color: #f8fafc; }
+        .feature-desc { font-size: 15px; color: #94a3b8; line-height: 1.5; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 42px; }
+            nav { padding: 20px; flex-direction: column; gap: 16px; position: absolute; }
+            .nav-links { display: flex; width: 100%; justify-content: space-between; }
+        }
     </style>
 </head>
 <body>
     <div class="bg-shapes">
         <div class="shape1"></div>
         <div class="shape2"></div>
+        <div class="shape3"></div>
     </div>
+
+    <nav>
+        <div class="logo">FinPredict</div>
+        <div class="nav-links">
+            <a href="/login" class="nav-link">Log In</a>
+            <a href="/register" class="btn-nav btn-nav-primary">Sign Up</a>
+        </div>
+    </nav>
     
-    <div class="glass-hero">
-        <h1>Predict the Future of <span>Stocks</span></h1>
-        <p>Leverage cutting-edge machine learning algorithms powered by XGBoost to analyze market movements and forecast prices in real-time.</p>
-        
-        <div class="btn-group">
-            <a href="/login" class="btn btn-primary">Log In</a>
-            <a href="/register" class="btn btn-secondary">Create Free Account</a>
+    <div class="hero">
+        <div class="glass-panel">
+            <div class="chip">AI-Powered Trading Intelligence</div>
+            <h1>Predict the Evolution of <span>Market Trends</span></h1>
+            <p class="subtitle">Leverage our state-of-the-art XGBoost machine learning algorithms to perform real-time technical analysis and accurately forecast short-term stock movements.</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <div class="feature-title">Real-Time Data</div>
+                    <div class="feature-desc">Instantly fetches the latest market data directly via the Yahoo Finance API to keep predictions flawlessly accurate.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <div class="feature-title">XGBoost Engine</div>
+                    <div class="feature-desc">Utilizes advanced Gradient Boosting regression and classification models specifically crafted to execute dynamic estimators.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Instant Analysis</div>
+                    <div class="feature-desc">Evaluates multiple Moving Averages simultaneously to give you a cohesive and comprehensive visual trading dashboard.</div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
