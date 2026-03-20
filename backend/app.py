@@ -12,7 +12,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-app = Flask(__name__)
+# Point to the frontend templates directory
+template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontend', 'templates'))
+app = Flask(__name__, template_folder=template_dir)
 app.secret_key = os.getenv("FLASK_SECRET")
 
 # ---------------- MYSQL CONNECTION ----------------

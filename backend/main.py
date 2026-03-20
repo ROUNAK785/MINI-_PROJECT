@@ -74,10 +74,11 @@ plt.title('Stock Price with Moving Averages') #plot ka title set kar rahe
 plt.legend()
 plt.show()
 
-plt.savefig("C:\\Users\\Sanjay Kumar Tiwary\\OneDrive\\Desktop\\MINI PROJECT\\stock_price_moving_averages.png") #plot ko "MINI PROJECT" folder mein "stock_price_moving_averages.png" naam se save kar rahe hain!!
+plt.savefig("C:\\Users\\Sanjay Kumar Tiwary\\OneDrive\\Desktop\\MINI PROJECT\\backend\\stock_price_moving_averages.png") #plot ko "backend" folder mein save kar rahe hain!!
 
 import os
 import joblib #library jisse model ko save kar paao noobdi!!
-os.makedirs("C:\\Users\\Sanjay Kumar Tiwary\\OneDrive\\Desktop\\MINI PROJECT\\model", exist_ok=True)
-joblib.dump(model_class, "C:\\Users\\Sanjay Kumar Tiwary\\OneDrive\\Desktop\\MINI PROJECT\\model\\xgb_classification_model.pkl") #classification model ko "model" folder mein save kar rahe hain!!
-joblib.dump(model_reg, "C:\\Users\\Sanjay Kumar Tiwary\\OneDrive\\Desktop\\MINI PROJECT\\model\\xgb_regression_model.pkl") #regression model ko "model" folder mein save kar rahe hain!!
+model_dir = "C:\\Users\\Sanjay Kumar Tiwary\\OneDrive\\Desktop\\MINI PROJECT\\backend\\model"
+os.makedirs(model_dir, exist_ok=True)
+joblib.dump(model_class, os.path.join(model_dir, "xgb_classification_model.pkl")) #classification model ko "model" folder mein save kar rahe hain!!
+joblib.dump(model_reg, os.path.join(model_dir, "xgb_regression_model.pkl")) #regression model ko "model" folder mein save kar rahe hain!!
