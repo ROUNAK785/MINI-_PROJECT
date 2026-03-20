@@ -43,8 +43,13 @@ def send_otp(email, otp):
     server.sendmail(sender_email, email, message)
     server.quit()
 
+# ---------------- LANDING PAGE ----------------
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 # ---------------- REGISTER ----------------
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']
